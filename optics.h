@@ -7,9 +7,12 @@
 using namespace std;
 
 class optics{
+public:
+	vector<opticsobject> input;
+	vector<opticsobject> output;
 private:
 	
-	void run_optics(vector<opticsobject> * ,vector<opticsobject> * ,double , int );		// epsilone parameter, and MinPts
+	void run_optics(double , int );		// epsilone parameter, and MinPts
 	
 	void update(vector<opticsobject> * , opticsobject * , multiset<opticsobject> * , double, int);				// in update(), the priority queue Seeds is updated with the ε-neighborhood of p and q
 	void extract_cluster();			// from ordering of the points and the reachability distance set by the update function the cluster numbers are assigned to the points
