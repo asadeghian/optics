@@ -1,8 +1,11 @@
 #ifndef _OPTICSOBJECT_H
 #define _OPTICSOBJECT_H
 
+#include<iostream>
 #include<vector>
 using namespace std;
+
+#define UNDEFINED -10000
 
 class opticsobject{
 	private:
@@ -10,14 +13,7 @@ class opticsobject{
 		bool is_core,is_processed;
 		double core_distance,reach_distance;
 		
-		vector<opticsobject * > neighbors;
 
-		opticsobject();
-		~opticsobject();
-
-		double distance();
-		vector<opticsobject> * find_neighbors();
-		bool operator < ( const OpticsObject x)const;
 
 	public:
 		void set_id(int);
@@ -27,13 +23,17 @@ class opticsobject{
 		void set_core_distance(double);
 		void set_reach_distance(double);
 
-		void get_id(int);
-		void get_cluster_id(int);
-		void get_is_core(bool);
-		void get_is_processed(bool);
-		void get_core_distance(double);
-		void get_reach_distance(double);
+		int get_id();
+		int get_cluster_id();
+		bool get_is_core();
+		bool get_is_processed();
+		double get_core_distance();
+		double get_reach_distance();
 		
+		bool operator < ( const opticsobject x)const;
+		double distance(opticsobject * next);
+		double find_core_distance(vector<opticsobject> * ,int );
+		vector<opticsobject> find_neighbors(vector<opticsobject> *,double);
 };
 
 #endif
